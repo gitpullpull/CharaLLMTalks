@@ -5,7 +5,7 @@ from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 # ベースモデルのロード
-model_id = r"E:\free_soft\LLM\ELYZA-japanese-Llama-2-13b-instruct"
+model_id = r"models\ELYZA-japanese-Llama-2-13b-instruct"
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_use_double_quant=True,
@@ -17,7 +17,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_id)
 base_model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config=bnb_config, device_map={"":0})
 
 # LoRAの適用
-peft_name = r"D:\program\CharaLLMTalks\qlora\output\checkpoint-1000"
+peft_name = r"loras\nahida_lora_jp"
 model = PeftModel.from_pretrained(
     base_model,
     peft_name,
