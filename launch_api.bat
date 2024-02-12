@@ -8,4 +8,4 @@ cd /d %bert_vits_path%
 CALL venv\Scripts\activate.bat
 
 REM スクリプトを実行する
-start venv\Scripts\python.exe server_fastapi.py
+python server_fastapi.py

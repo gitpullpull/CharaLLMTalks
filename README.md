@@ -1,1 +1,2 @@
 # CharaLLMTalks
+将来的にqloraからllamacppへの変更を検討しているが、windowsでのインストールに問題が発生しているため保留
