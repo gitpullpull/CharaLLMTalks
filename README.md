@@ -41,9 +41,10 @@ pip install gradio
 
 ### 4.Elyzaやキャラクターモデルのダウンロード
 bert vitsモデルのダウンロード  
-style bert vitsのフォルダに入れてください。
+style bert vitsのフォルダに入れてください。  
 https://huggingface.co/gitpullpull/nahida_bert_vits2_jp  
 
+qloraのモデルダウンロード  
 https://huggingface.co/gitpullpull/nahida_lora_jp  
 
 ## 使い方
