@@ -1,11 +1,11 @@
 # CharaTalkLLM
-### CharaTalkLLMは、Windows上で動作する、あなたの好きなキャラクターを学習してエミュレートできる高精度な日本語TTS（テキスト・トゥ・スピーチ）システムです。
+### CharaTalkLLMは、Windows上で動作する、あなたの好きなキャラクターを学習してエミュレートできる日本語TTSアプリです。
 
 
 特徴
 Windows 対応: このシステムはWindowsを前提に設計されており、手軽にセットアップできます。
 ウェブユーザーインターフェース: 使いやすいウェブUIを通じて、トレーニングや音声合成を行えます。
-高精度な日本語TTS: Style Bert Vits技術により、自然な日本語のテキスト・トゥ・スピーチを実現。
+高精度な日本語TTS: Style Bert Vits技術により、自然な日本語のTTSを実現。
 カスタマイズ可能: あなたの好きなキャラクターの声を学習し、エミュレートすることが可能です。
 
 
@@ -41,7 +41,8 @@ pip install gradio
 
 ### 4.Elyzaやキャラクターモデルのダウンロード
 bert vitsモデルのダウンロード  
-style bert vitsのフォルダに入れてください。  
+style bert vitsのフォルダに入れてください。
+demo nahida
 https://huggingface.co/gitpullpull/nahida_bert_vits2_jp  
 
 qloraのモデルダウンロード  
