@@ -4,6 +4,8 @@ import ollama
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from fastapi.staticfiles import StaticFiles
+import os
 
 # --- 設定項目 ---
 # Ollamaに登録したモデル名
@@ -108,7 +110,7 @@ async def chat_endpoint(request: ChatRequest):
         audio_base64=audio_base64
     )
 
-@app.get("/", summary="Root endpoint")
-def read_root():
-    """バックエンドサーバーが動作していることを確認するためのルートエンドポイント。"""
-    return {"message": "AI Chatbot Backend is running. Access the API at /api/chat."}
+# frontendフォルダ内の静的ファイル（HTML, CSS, JS）を配信する設定
+# main.pyの場所を基準にfrontendディレクトリのパスを解決します
+frontend_dir = os.path.join(os.path.dirname(__file__), "..", "frontend")
+app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="static")
