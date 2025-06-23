@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qwen AIチャットボット</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AIチャットボット</h1>
+            <p class="description">AIに質問をすると、テキストと音声で答えてくれます。</p>
+        </header>
+
+        <main id="chat-area">
+            <div id="response-container" class="response-container" style="display: none;">
+                <p class="response-label">AIの応答:</p>
+                <p id="llm-response"></p>
+                <audio id="audio-player" controls></audio>
+            </div>
+        </main>
+
+        <footer id="input-area">
+            <textarea id="user-input" placeholder="ここに質問を入力してください...(Shift+Enterで改行)" rows="1"></textarea>
+            <button id="send-button" title="送信">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </footer>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>AIが考えています...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
