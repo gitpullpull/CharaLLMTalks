@@ -1,0 +1,64 @@
+# Python仮想環境
+.venv/
+venv/
+env/
+
+# Python キャッシュ
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# 環境設定ファイル
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ログファイル
+*.log
+logs/
+
+# データベース
+*.db
+*.sqlite
+*.sqlite3
+
+# OS生成ファイル
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE/エディタ設定
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# uvプロジェクトファイル（必要に応じて）
+uv.lock
+
+# フロントエンド関連
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
+
+# テスト関連
+.coverage
+.pytest_cache/
+.tox/
+
+# 一時ファイル
+*.tmp
+*.bak
+*.backup

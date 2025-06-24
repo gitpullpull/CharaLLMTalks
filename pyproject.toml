@@ -1,0 +1,14 @@
+[project]
+name = "charallmtalks"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115.13",
+    "ollama>=0.5.1",
+    "python-dotenv>=1.1.0",
+    "python-multipart>=0.0.20",
+    "requests>=2.32.4",
+    "uvicorn[standard]>=0.34.3",
+]
