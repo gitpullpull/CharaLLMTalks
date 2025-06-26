@@ -1,4 +1,3 @@
-import base64
 import requests
 import ollama
 from fastapi import FastAPI, HTTPException
@@ -56,15 +55,20 @@ async def chat_endpoint(request: ChatRequest):
     - **user_input**: ユーザーが入力したテキスト。
     - **returns**: LLMの応答テキストと、Base64エンコードされたWAV形式の音声データ。
     """
+    print("--- [1] Received request for /api/chat ---") # 追加
+    print(f"User input: {request.user_input}") # 追加
     # 1. LLMからのテキスト応答を生成 (Ollama)
     try:
         # Modelfileでテンプレートが定義されているため、ユーザーの入力をそのまま渡す
+        print("--- [2] Calling Ollama... ---") # 追加
         ollama_response = ollama.generate(
             model=OLLAMA_MODEL_NAME,
             prompt=request.user_input,
             stream=False,
         )
+        print("--- [3] Ollama response received ---") # 追加
         response_text = ollama_response['response'].strip()
+        print(f"Ollama response: {response_text}") # 追加
 
     except Exception as e:
         print(f"Error during Ollama inference: {e}")

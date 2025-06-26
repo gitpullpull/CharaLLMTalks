@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Elements ---
+    // --- DOM要素の取得 ---
     const sendButton = document.getElementById('send-button');
     const userInput = document.getElementById('user-input');
     const llmResponseElem = document.getElementById('llm-response');
@@ -7,33 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingOverlay = document.getElementById('loading-overlay');
     const responseContainer = document.getElementById('response-container');
 
-    // --- API Configuration ---
+    // --- API設定 ---
     const API_URL = 'http://127.0.0.1:8000/api/chat';
 
-    // --- Event Listeners ---
-
-    // Send button click
-    sendButton.addEventListener('click', handleSend);
-
-    // Enter key to send (Shift+Enter for new line)
-    userInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault(); // Prevent new line
-            handleSend();
-        }
-    });
-
-    // Auto-resize textarea
-    userInput.addEventListener('input', () => {
-        userInput.style.height = 'auto';
-        userInput.style.height = `${userInput.scrollHeight}px`;
-    });
-
-
-    // --- Core Functions ---
+    // --- コア機能の関数定義 ---
 
     /**
-     * Handles sending the user's message to the backend.
+     * ユーザーのメッセージをバックエンドに送信し、応答を処理します。
      */
     const handleSend = async () => {
         const message = userInput.value.trim();
@@ -64,14 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
             displayError(`エラーが発生しました: ${error.message}`);
         } finally {
             setLoadingState(false);
-            userInput.value = ''; // Clear input after sending
-            userInput.style.height = 'auto'; // Reset textarea height
+            userInput.value = ''; // 送信後にテキストエリアをクリア
+            userInput.style.height = 'auto'; // テキストエリアの高さをリセット
         }
     };
 
     /**
-     * Toggles the loading state of the UI.
-     * @param {boolean} isLoading - Whether to show or hide the loading state.
+     * UIのローディング状態を切り替えます。
+     * @param {boolean} isLoading - ローディング状態にするかどうか。
      */
     const setLoadingState = (isLoading) => {
         loadingOverlay.style.display = isLoading ? 'flex' : 'none';
@@ -81,15 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
             userInput.focus();
         }
     };
-    
+
     /**
-     * Displays the response from the AI.
-     * @param {string} text - The text response from the LLM.
-     * @param {string} audioBase64 - The Base64 encoded audio data.
+     * AIからの応答を画面に表示します。
+     * @param {string} text - LLMからのテキスト応答。
+     * @param {string} audioBase64 - Base64エンコードされた音声データ。
      */
     const displayResponse = (text, audioBase64) => {
         llmResponseElem.textContent = text;
-        
+
         const audioBlob = b64toBlob(audioBase64, 'audio/wav');
         const audioUrl = URL.createObjectURL(audioBlob);
         audioPlayer.src = audioUrl;
@@ -98,8 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
-     * Displays an error message in the response area.
-     * @param {string} errorMessage - The error message to display.
+     * エラーメッセージを応答エリアに表示します。
+     * @param {string} errorMessage - 表示するエラーメッセージ。
      */
     const displayError = (errorMessage) => {
         llmResponseElem.textContent = errorMessage;
@@ -107,14 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
         responseContainer.style.display = 'block';
     };
 
-    // --- Helper Functions ---
+    // --- ヘルパー関数 ---
 
     /**
-     * Converts a Base64 string to a Blob object.
-     * @param {string} b64Data - The Base64 encoded data.
-     * @param {string} contentType - The content type of the data.
-     * @param {number} sliceSize - The size of the slices to process.
-     * @returns {Blob} The resulting Blob object.
+     * Base64文字列をBlobオブジェクトに変換します。
+     * @param {string} b64Data - Base64エンコードされたデータ。
+     * @param {string} contentType - データのコンテントタイプ。
+     * @param {number} sliceSize - 処理するスライスのサイズ。
+     * @returns {Blob} 変換後のBlobオブジェクト。
      */
     function b64toBlob(b64Data, contentType = '', sliceSize = 512) {
         const byteCharacters = atob(b64Data);
@@ -132,4 +112,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return new Blob(byteArrays, { type: contentType });
     }
+
+    // --- イベントリスナーの設定 --- (全ての関数定義の後)
+
+    // 送信ボタンのクリックイベント
+    sendButton.addEventListener('click', handleSend);
+
+    // Enterキーで送信 (Shift+Enterで改行)
+    userInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault(); // デフォルトの改行動作をキャンセル
+            handleSend();
+        }
+    });
+
+    // テキストエリアの自動リサイズ
+    userInput.addEventListener('input', () => {
+        userInput.style.height = 'auto';
+        userInput.style.height = `${userInput.scrollHeight}px`;
+    });
 });
