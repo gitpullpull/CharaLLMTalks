@@ -13,3 +13,11 @@ llama2 baseの日本語モデルをqloraでファインチューニング → Qw
 transformersで推論(huggingface形式)→ollamaでの推論(GGUF)
 
 Fast APIサーバーを利用した style bert vits での日本語TTS
+
+# インストール方法
+ollamaをインストールした後、
+
+install_mainを実行
+
+その後style_bet_bits2をインストールするかインストーラーをクリックしてください。
+
